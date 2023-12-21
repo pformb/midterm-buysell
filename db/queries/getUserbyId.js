@@ -1,5 +1,7 @@
+const db = require('../connection');
+
 // Function to retrieve a user based on their ID using the buy/sell database
-const getUserById = function (id) {
+const getUserById = (id) => {
   return pool
     .query("SELECT * FROM users WHERE id = $1 LIMIT 1", [id])
     .then((result) => {
@@ -11,3 +13,6 @@ const getUserById = function (id) {
       console.error(err.message);
     });
 };
+
+module.exports = { getUserById };
+

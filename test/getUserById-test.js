@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const { getUserById, pool } = require('./getUserById');
+const { getUserById } = require('./getUserById');
 
 describe('getUserById', () => {
   // Mocking the pool object for testing purposes
