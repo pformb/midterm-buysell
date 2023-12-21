@@ -6,7 +6,7 @@ describe('getUserByEmail', () => {
   const originalQuery = pool.query;
   pool.query = () => {
     return {
-      then: (callback) => callback({ rows: [{ id: 1, name: 'Test User' }] }),
+      then: (callback) => callback({ rows: [{ email: 1, name: 'Test Email' }] }),
     };
   };
 
