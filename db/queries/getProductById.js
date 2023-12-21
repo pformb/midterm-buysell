@@ -10,3 +10,5 @@ const getProductById = function (id) {
       console.error(err.message);
     });
 }
+
+module.exports = { getProductById };
