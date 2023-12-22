@@ -1,4 +1,6 @@
 // Client facing scripts here
+//Frontend Routes
+
 $(() => {
   $('#fetch-users').on('click', () => {
     $.ajax({

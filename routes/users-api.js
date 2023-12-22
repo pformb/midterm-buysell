@@ -5,6 +5,7 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+//Backend Routes
 const express = require('express');
 const router  = express.Router();
 const userQueries = require('../db/queries/users');
@@ -21,4 +22,9 @@ router.get('/', (req, res) => {
     });
 });
 
+//register
+
+//login
+
+//logout
 module.exports = router;
