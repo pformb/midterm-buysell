@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS reviews CASCADE;
+CREATE TABLE reviews (
+  id SERIAL PRIMARY KEY NOT NULL,
+  rating FLOAT(1) NOT NULL,
+  comment TEXT,
+  user_id INTEGER REFERENCES users (id),
+  product_id INTEGER REFERENCES products (id),
+  date_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
