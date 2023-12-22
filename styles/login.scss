@@ -1,0 +1,40 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  // vh is viewport height
+  margin: 0;
+}
+
+.login-container {
+  text-align: center;
+  border-radius: 50%;
+  //rounded corners for more modern look
+
+  form {
+    max-width: 90%;
+    // of reg container
+    margin: 0 auto;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: auto;
+      padding: 5 px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: beige;
+      color: #466365;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
