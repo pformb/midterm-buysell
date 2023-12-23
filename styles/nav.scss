@@ -1,0 +1,39 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 120px;
+  background-color: #466365;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  font-size: 24px;
+}
+
+img {
+  width: 110px;
+  height: 65px;
+  margin-left: 5px;
+}
+
+div.links a {
+  color: #EAF0CE;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.links a:hover {
+  color: #62B6CB;
+}
+
+.login,
+.register {
+  display: flex;
+  align-items: center;
+  color: #EAF0CE;
+  margin-left: 10px; /* Add some spacing between login and register */
+}
