@@ -11,20 +11,31 @@
 <body>
   <header>
     <nav>
-      <ul>
+      <div class="logo">
         <!-- Logo Links to Home Page-->
         <a class="home" href="/">
-          <img src="./images/logo.png">
+          <img src="./images/logo.png" alt="Logo">
         </a>
-        <div class="links">
-        <a class="browse" href="/browse">Browse</a>
-        <a class="about" href="/about">About</a>
-        <a class="help" href="/help">Help</a>
       </div>
-        <a class="login" href="/login">Login</a>
-        <a class="register" href="/register">Register</a>
-        <button> Post Ad </button>
-      </ul>
+      <div class="search-and-links">
+        <div class="search-bar">
+          <!-- search bar HTML goes here -->
+          <input type="text" placeholder="Search...">
+        </div>
+        <div class="links">
+          <a class="browse" href="/browse">Browse</a>
+          <a class="about" href="/about">About</a>
+          <a class="help" href="/help">Help</a>
+        </div>
+        <div class="login-register">
+          <a class="register" href="/register">Register</a>
+          <span class="separator"> or </span>
+          <a class="login" href="/login">Sign In</a>
+        </div>
+        <div class="post-ad">
+          <button>Post Ad</button>
+        </div>
+      </div>
     </nav>
   </header>
 </body>
