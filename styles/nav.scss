@@ -6,29 +6,27 @@ nav {
   z-index: 1000;
   height: 120px;
   background-color: #466365;
+  background-image: url("https://www.transparenttextures.com/patterns/black-paper.png");
   padding: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  flex-direction: row;
   font-size: 24px;
-}
-
-/* Style each navigation element */
-.nav > div {
-  display: flex;
-  align-items: center;
+  font-family: 'Chelsea Market', sans-serif;;
 }
 
 .search-and-links {
   display: flex;
   align-items: center;
+
 }
+
 
 .search-bar {
   display: flex;
   align-items: center;
-  margin-right: 600px;
   width: 120px;
+  margin-left: 50px;
 }
 
 
@@ -49,9 +47,31 @@ div.links a {
   color: #62B6CB;
 }
 
+.links{
+  color: #EAF0CE;
+  text-decoration: none;
+  transition: color 0.3s;
+  margin-left: 300px;
+  font-size: 20px;
+  padding: 12px;
+}
+
+.vl {
+  border-left: 4px solid #EAF0CE;
+  height: 75px;
+  margin-left: 125px;
+}
+
 .login-register {
   display: flex;
   align-items: center;
+  margin-left: 100px;
+  font-size: 20px;
+  padding-right: 10px;
+}
+
+.login-register a:hover {
+  color: #62B6CB;
 }
 
 .register,
@@ -59,14 +79,15 @@ div.links a {
   color: #EAF0CE;
   text-decoration: none;
   transition: color 0.3s;
-  margin-left: 10px; /* Add spacing between links */
 }
 
 .login-register .separator {
-  margin: 0 10px;
+  margin: 0 5px;
   color: #EAF0CE;
 }
 
 button {
   cursor: pointer;
+  margin-left: 50px;
+
 }
