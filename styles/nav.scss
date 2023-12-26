@@ -12,7 +12,7 @@ nav {
   align-items: center;
   flex-direction: row;
   font-size: 24px;
-  font-family: 'Chelsea Market', sans-serif;;
+  font-family: 'Chelsea Market', sans-serif;
 }
 
 .search-and-links {
@@ -41,6 +41,7 @@ div.links a {
   color: #EAF0CE;
   text-decoration: none;
   transition: color 0.3s;
+  padding: 10px;
 }
 
 .links a:hover {
@@ -51,21 +52,21 @@ div.links a {
   color: #EAF0CE;
   text-decoration: none;
   transition: color 0.3s;
-  margin-left: 300px;
+  margin-left: 270px;
   font-size: 20px;
   padding: 12px;
 }
 
 .vl {
-  border-left: 4px solid #EAF0CE;
+  border-left: 2px solid #EAF0CE;
   height: 75px;
-  margin-left: 125px;
+  margin-left: 150px;
 }
 
 .login-register {
   display: flex;
   align-items: center;
-  margin-left: 100px;
+  margin-left: 50px;
   font-size: 20px;
   padding-right: 10px;
 }
@@ -82,12 +83,14 @@ div.links a {
 }
 
 .login-register .separator {
-  margin: 0 5px;
+  padding: 10px;
   color: #EAF0CE;
+  font-size: 15px;
 }
 
 button {
   cursor: pointer;
   margin-left: 50px;
-
 }
+
+
