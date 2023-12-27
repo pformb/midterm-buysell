@@ -18,7 +18,6 @@ nav {
 .search-and-links {
   display: flex;
   align-items: center;
-
 }
 
 
@@ -27,6 +26,7 @@ nav {
   align-items: center;
   width: 120px;
   margin-left: 30px;
+  margin-right: 270px;
 }
 
 
@@ -52,13 +52,13 @@ div.links a {
   color: #EAF0CE;
   text-decoration: none;
   transition: color 0.3s;
-  margin-left: 275px;
+  margin-left: 10px;
   font-size: 20px;
   padding: 12px;
 }
 
 .vl {
-  border-left: 2px solid #EAF0CE;
+  border-left: 1px solid #EAF0CE;
   height: 75px;
   margin-left: 150px;
 }
