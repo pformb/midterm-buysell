@@ -6,30 +6,26 @@ const { userExists } = require('../db/queries/userExists');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   res.render('register');
 });
 
 //Post route for register
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const user = req.body;
   user.password = bcrypt.hashSync(user.password, 12);
-
-  db.query(`
-    INSERT INTO users (first_name, last_name, email, password)
-    VALUES ($1, $2, $3, $4)
-    RETURNING *;
-  `, [user.firstName, user.lastName, user.email, user.password])
-    .then((data) => {
-      const user = data.rows[0];
-      req.session.user_id = user.id;
-      res.redirect('/');
-    })
-    .catch((err) => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+  try {
+    const newUser = await addUser(user);
+    const exists = await userExists(newUser.email);
+  if(exists) {
+    res.redirect('/register').send('This user email already exists in our system');
+  } else {
+    req.session.user_id = newUser.id;
+    req.send("You have successfully registered!");
+  }
+  } catch (err) {
+    res.status(500).send(err.message, "An error has occureed during the registration process please try again.");
+  }
 });
 
 module.exports = router;
