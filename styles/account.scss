@@ -1,0 +1,38 @@
+.container {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: row;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  list-style-type: none;
+  padding-left: 0px;
+  width: 250px;
+}
+
+li {
+  border-bottom: solid;
+  margin-bottom: 100px;
+  padding-top: 20px;
+}
+
+.side-panel {
+  background-color: #AF7A6D;
+  color: #eaf0ce;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form > button {
+  margin-left: 0px;
+  font-size: large;
+}
+
+.side-panel {
+  font-size: 25px;
+}
