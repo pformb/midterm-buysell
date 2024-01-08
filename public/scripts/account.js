@@ -46,4 +46,26 @@ $(document).ready(function () {
     $('main').html(content);
   })
 
+  $('#orders').on('click', function () {
+    const content = `<h1>Orders</h1>
+    <div class="selling-menu">
+      <span>Current</span>
+      <span>Pending</span>
+      <span>History</span>
+    </div>
+    <div class="selling-items">
+      Items
+    </div>`;
+
+    $('main').html(content);
+  })
+
+  $('#favorites').on('click', function () {
+    const content = ` <h1 class="messages-h1">Favourites</h1>
+    <div>Favourites</div>`;
+
+    $('main').html(content);
+
+  })
+
 });
