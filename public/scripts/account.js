@@ -32,4 +32,18 @@ $(document).ready(function () {
 
   })
 
+  $('#selling').on('click', function () {
+    const content = `<h1>Selling</h1>
+    <div class="selling-menu">
+      <span>Current</span>
+      <span>Pending</span>
+      <span>History</span>
+    </div>
+    <div class="selling-items">
+      Items
+    </div>`;
+
+    $('main').html(content);
+  })
+
 });

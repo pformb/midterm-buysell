@@ -71,3 +71,14 @@ header {
 .messages-h1 {
   border-bottom: solid;
 }
+
+
+
+.selling-menu {
+  display: flex;
+  flex-direction:row;
+  justify-content:flex-start;
+  gap: 25px;
+  border-bottom: solid;
+
+}
