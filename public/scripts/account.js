@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  $('#profile').on('click', function () {
 
+  $('#profile').on('click',function () {
     const content = `<header>
     <h1>Profile</h1>
     <div class="header-footer">
@@ -21,8 +21,7 @@ $(document).ready(function () {
     <button>EDIT</button>
   </div>`;
 
-  $('main').html(content);
-
+    $('main').html(content);
   })
 
   $('#messages').on('click', function () {
