@@ -24,4 +24,12 @@ $(document).ready(function () {
   $('main').html(content);
 
   })
+
+  $('#messages').on('click', function () {
+    const content = ` <h1 class="messages-h1">Messages</h1>`;
+
+    $('main').html(content);
+
+  })
+
 });
