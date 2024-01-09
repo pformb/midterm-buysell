@@ -22,20 +22,56 @@
 </header>
 
 <body>
+  <h1>Filter Options:</h1>
+<div class="filter-form">
+  <div class="category-select">Select Category
+  <select name="categories">
+    <optgroup label="Art"></optgroup>
+    <optgroup label="Collectables"></optgroup>
+    <optgroup label="Creations"></optgroup>
+    <optgroup label="Fashion"></optgroup>
+    <optgroup label="Food"></optgroup>
+    <optgroup label="Home/Garden"></optgroup>
+    <optgroup label="Pets"></optgroup>
+    <optgroup label="Services"></optgroup>
+    <optgroup label="Wood Working"></optgroup>
+  </select>
+</div>
+<div class="filter-price">
+<label for="minPrice">Min Price:</label>
+<textarea id="minPrice" name="minPrice" rows="1" placeholder="Enter min price"></textarea>
+<br>
+<label for="maxPrice">Max Price:</label>
+<textarea id="maxPrice" name="maxPrice" rows="1" placeholder="Enter max price"></textarea>
+</div>
+<div class="filter-quantity">
+  <label for="minQuantity">Min qty:</label>
+  <textarea id="minQuantity" name="minQuantity" rows="1" placeholder="Enter min qty"></textarea>
+  <br>
+  <label for="maxPrice">Max qty:</label>
+  <textarea id="maxQuantity" name="maxQuantity" rows="1" placeholder="Enter max qty"></textarea>
+  </div>
+  <div class="filter-button">
+  <button type="submit">Filter</button>
+</div>
+</div>
 
     <!-- Use EJS syntax for looping through data -->
     <div class="product-container">
     <% data.forEach((product) => { %>
       <div class="product-box">
       <div> <%= product.title %> </div>
-      <div class="product-description-price">
+      <div class="product-description">
       <div> <%= product.description %> </div>
-      <div> <%= product.price %> </div>
     </div>
+      <div> <%= product.price %> </div>
+
       <div> qty: <%= product.quantity %> </div>
       <div> <img src="<%= product.thumbnail %>" /> </div>
+      <button class="add-cart">Add to Cart</button>
     </div>
     <% }) %>
+
   </div>
 </body>
 
