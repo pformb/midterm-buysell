@@ -13,11 +13,8 @@
   <link rel="stylesheet" href="/styles/browse.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
+  <script src="../db/queries/createProductCards.js"></script>
 
-
-
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
 </head>
 
 <header>
@@ -25,13 +22,21 @@
 </header>
 
 <body>
-  <div class="browse-ad-placeholders-row1">
-    <% data.forEach((product) => {%>
+
+    <!-- Use EJS syntax for looping through data -->
+    <div class="product-container">
+    <% data.forEach((product) => { %>
+      <div class="product-box">
       <div> <%= product.title %> </div>
+      <div class="product-description-price">
       <div> <%= product.description %> </div>
-      <% }) %>
-
-
+      <div> <%= product.price %> </div>
+    </div>
+      <div> qty: <%= product.quantity %> </div>
+      <div> <img src="<%= product.thumbnail %>" /> </div>
+    </div>
+    <% }) %>
+  </div>
 </body>
 
 </html>
