@@ -1,8 +1,8 @@
 const express = require('express');
 const db = require('../db/connection');
 const bcrypt = require('bcrypt');
-const { addUser } = require('../db/queries/addUser');
-const { userExists } = require('../db/queries/userExists');
+const { addUser } = require('../db/queries/addUser.js');
+const { userExists } = require('../db/queries/userExists.js');
 
 const router = express.Router();
 
