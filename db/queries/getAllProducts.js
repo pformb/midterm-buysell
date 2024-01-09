@@ -1,5 +1,5 @@
-const getAllProducts = function (limit = 10) {
-  return pool
+const getAllProducts = function (db, limit = 10) {
+  return db
     .query(
       `SELECT products.id, products.title, products.description, products.thumbnail, products.additional_photo, products.price, products.quantity
       FROM products
@@ -18,3 +18,5 @@ const getAllProducts = function (limit = 10) {
       throw err; // Re-throw the error to handle it in the calling code
     });
 };
+
+module.exports = {getAllProducts}
