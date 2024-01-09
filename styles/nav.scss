@@ -25,16 +25,23 @@ nav {
   display: flex;
   align-items: center;
   width: 120px;
-  margin-left: 30px;
-  margin-right: 270px;
+  margin-left: 70px;
+  margin-right: 220px;
 }
 
 
-img {
-  width: 175px;
-  height: 100px;
-  margin-right: 10px;
+.home {
+  color: #EAF0CE;
+  text-decoration: none;
+  transition: color 0.3s;
+  padding: 10px;
   margin-left: 10px;
+  font-size: 35px;
+  font-family: 'Texturina', serif;
+}
+
+.home:hover {
+  color: #62B6CB;
 }
 
 div.links a {
@@ -60,13 +67,13 @@ div.links a {
 .vl {
   border-left: 1px solid #EAF0CE;
   height: 75px;
-  margin-left: 150px;
+  margin-left: 50px;
 }
 
 .login-register {
   display: flex;
   align-items: center;
-  margin-left: 30px;
+  margin-left: 50px;
   font-size: 20px;
   padding-right: 10px;
 }
