@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/account.css" type="text/css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/account.js"></script>
+
+  <title>My Account</title>
+</head>
+<body>
+  <%- include('partials/_header') %>
+<div class="container">
+  <div class="side-panel">
+    <ul>
+      <li>[Email Address]</li>
+      <li id="profile">Profile</li>
+      <li id="orders">Orders</li>
+      <li id="selling">Selling</li>
+      <li id="favorites">Favourites</li>
+      <li id="messages">Messages</li>
+    </ul>
+    <form action=""><button type="submit">Log Out</button></form>
+  </div>
+  <main class="main-container">
+    <header>
+      <h1>Profile</h1>
+      <div class="header-footer">
+        <h3>Personal Information</h3>
+        <button>EDIT</button>
+      </div>
+    </header>
+    <div class="profile">
+      <img src="./images/sample-profile-pic.png" alt="">
+      <div class="input-fields">
+        <label for="">Name: <input type="text" placeholder="Name"></label>
+        <label for="">Email: <input type="email" placeholder="Email Address"></label>
+        <label for="">Password: <input type="password" placeholder="******"></label>
+      </div>
+    </div>
+    <div class="header-footer">
+      <h3>Shipping Information</h3>
+      <button>EDIT</button>
+    </div>
+  </main>
+</div>
+</body>
+</html>
