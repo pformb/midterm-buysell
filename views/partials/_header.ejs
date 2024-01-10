@@ -33,11 +33,23 @@
           <a class="help" href="/help">Help</a>
         </div>
         <div class="vl"></div>
+
         <div class="login-register">
+
+        <% if (user) { %>
+          logged in as <%= user.name %>
+          <form action="/logout" method="POST">
+            <button type="submit">Logout</button>
+            </form>
+
+        <% } else { %>
+
           <a class="register" href="/register">Register</a>
           <span class="separator"> or </span>
           <a class="login" href="/login">Sign In</a>
         </div>
+        <% } %>
+
         <div class="post-ad">
           <button>Post Ad</button>
         </div>
