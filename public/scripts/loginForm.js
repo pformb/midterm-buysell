@@ -21,15 +21,19 @@ $(() => {
   </form>
 </div>
 `);
-  window.$loginForm = $loginForm;
+  function login(data) {
+    return $.post('/login', data);
+  }
 
   $loginForm.on('submit', function (event) {
     event.preventDefault();
 
     const data = $(this).serialize();
     login(data)
-      .then(function (json) {
-        header.update(json);
+      .done(function () {
+        window.location.href = '/browse';
+      })
+      .fail(function (error) {
+        console.log(error, "Login Failed");
       });
   });
-});
