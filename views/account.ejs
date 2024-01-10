@@ -20,7 +20,7 @@
 <div class="container">
   <div class="side-panel">
     <ul>
-      <li>[Email Address]</li>
+      <li><%=user.email%></li>
       <li id="profile">Profile</li>
       <li id="orders">Orders</li>
       <li id="selling">Selling</li>
@@ -40,7 +40,7 @@
     <div class="profile">
       <img src="./images/sample-profile-pic.png" alt="">
       <div class="input-fields">
-        <label for="">Name: <input type="text" placeholder="Name"></label>
+        <label for=""><%= user.first_name %><input type="text" placeholder="Name"></label>
         <label for="">Email: <input type="email" placeholder="Email Address"></label>
         <label for="">Password: <input type="password" placeholder="******"></label>
       </div>
