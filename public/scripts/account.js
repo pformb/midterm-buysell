@@ -114,7 +114,6 @@ $(document).ready(function () {
   }
 
 
-
   // Click event for the "EDIT" button in profile section
   $('.header-footer button').on('click', toggleEdit);
 

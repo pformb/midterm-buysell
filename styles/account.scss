@@ -125,15 +125,14 @@ header {
   display: inline-block;
 }
 
-/* Add this to your existing CSS or create a new style block */
 .selling-option,
 .orders-option {
   cursor: pointer;
-  color: #000; /* Change the color as needed */
+  color: #000;
 }
 
-/* Add hover effect for better visual feedback */
+
 .selling-option:hover,
 .orders-option:hover {
-  color: #62B6CB; /* Change the hover color as needed */
+  color: #62B6CB;
 }
