@@ -11,16 +11,16 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
   const { email, password } = req.body;
   const user = await getUserByEmail(email);
-  try {
+
     if (user && bcrypt.compareSync(password, user.password)) {
-      req.session.user = user;
-      res.redirect('/browse').status(200).send('Login Successful');
+      console.log('login faulure');
+      res.status(401).send('Login Failed: invalid email or password');
+
     } else {
-      res.redirect('/login').status(401).send('Login Failed: invalid email or password');
+      req.session.user = user;
+      console.log('login success');
+      return res.redirect('/browse');
     }
-  } catch (err) {
-    res.status(500).send("An error occurred during the login process");
-  }
 });
 
 module.exports = router;
