@@ -27,36 +27,48 @@
       <li id="favorites">Favourites</li>
       <li id="messages">Messages</li>
     </ul>
-    <form action=""><button type="submit">Log Out</button></form>
   </div>
   <main class="main-container">
+
     <header>
       <h1>Profile</h1>
       <div class="header-footer">
         <h3>Personal Information</h3>
-        <button>EDIT</button>
+        <button >EDIT</button>
       </div>
     </header>
     <div class="profile">
+      <div class="profile-picture">
       <img src="./images/sample-profile-pic.png" alt="">
+      <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
+      <label for="profilePictureInput">Change Profile Picture</label>
+      </div>
       <div class="input-fields">
-        <label for="">Name
+        <label for=""><b>Name:</b>
           <%= user.first_name %> <%= user.last_name %>
-          <input type="text" placeholder="Name" id="nameInput" readonly>
+          <input type="text" id="nameInput" readonly>
         </label>
-        <label for="">Email Address
+        <label for=""><b>Email Address:</b>
           <%= user.email %>
-          <input type="email" placeholder="Email Address" id="emailInput" readonly>
+          <input type="email" id="emailInput" readonly>
         </label>
-        <label for="">Street
+        <label for=""><b>Street:</b>
           <%= user.street %>
-          <input type="text" placeholder="Street" id="addressInput" readonly>
+          <input type="text" id="addressInput" readonly>
+        </label>
+        <label for=""><b>City:</b>
+          <%= user.city %>
+          <input type="text" id="cityInput" readonly>
+        </label>
+        <label for=""><b>Postal Code:</b>
+          <%= user.postal_code %>
+          <input type="text" id="postalInput" readonly>
+        </label>
+        <label for=""><b>Province:</b>
+          <%= user.province %>
+          <input type="text" id="provinceInput" readonly>
         </label>
       </div>
-    </div>
-    <div class="header-footer">
-      <h3>Shipping Information</h3>
-      <button>EDIT</button>
     </div>
   </main>
 </div>

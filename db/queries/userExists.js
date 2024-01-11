@@ -1,8 +1,10 @@
-const userExists = function (id) {
-  const query = "SELECT * FROM users WHERE id = $1 LIMIT 1";
-  const values = [id];
+const db = require("../connection");
 
-    return pool
+const userExists = function (email) {
+  const query = "SELECT * FROM users WHERE email = $1 LIMIT 1";
+  const values = [email];
+
+    return db
     //[values] creates a nested array and can't pass directly into query
     .query(query, values)
     .then ((result) => {

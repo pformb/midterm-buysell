@@ -5,11 +5,14 @@ $(() => {
   const $registrationForm = $(`
     <div>
       <form id="registration-form">
-        <label for="first-name">First Name:</label>
-        <input type="text" id="first-name" name="first-name" required />
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
 
-        <label for="last-name">Last Name:</label>
-        <input type="text" id="last-name" name="last-name" required />
+        <label for="firstName">First Name:</label>
+        <input type="text" id="first-name" name="firstName" required />
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="last-name" name="lastName" required />
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required />
@@ -24,15 +27,20 @@ $(() => {
       </form>
     </div>
   `);
-  window.$registrationForm = $registrationForm;
+      function register(data) {
+        return $.post('/register', data);
+      }
 
-  $registrationForm.on('submit', function (event) {
-    event.preventDefault();
+      $registrationForm.on('submit', function (event) {
+        event.preventDeafult();
 
-    const data = $(this).serialize();
-    registration(data)
-      .then(function (json) {
-        header.update(json);
+        const data = $(this).serialize();
+        register(data)
+        .done(function () {
+          window.location.href = '/browse';
+        })
+        .fail(function (error) {
+          console.log(error, "Registration Failed");
       });
   });
 });
