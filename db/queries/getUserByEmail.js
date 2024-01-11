@@ -14,6 +14,7 @@ const getUserByEmail = function (email) {
   });
 };
 
+
 module.exports = {getUserByEmail};
 
 getUserByEmail('user7@email.com');
