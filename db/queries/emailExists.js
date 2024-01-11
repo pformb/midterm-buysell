@@ -1,3 +1,5 @@
+const db = require('./connection.js');
+
 const emailExists = function (email) {
 const query = "SELECT * FROM users WHERE email = $1 LIMIT 1";
 const values = [email];

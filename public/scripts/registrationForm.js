@@ -24,15 +24,20 @@ $(() => {
       </form>
     </div>
   `);
-  window.$registrationForm = $registrationForm;
+      function register(data) {
+        return $.post('/register', data);
+      }
 
-  $registrationForm.on('submit', function (event) {
-    event.preventDefault();
+      $registrationForm.on('submit', function (event) {
+        event.preventDeafult();
 
-    const data = $(this).serialize();
-    registration(data)
-      .then(function (json) {
-        header.update(json);
+        const data = $(this).searlize();
+        login(data)
+        .done(function () {
+          window.location.href = '/browse';
+        })
+        .fail(function (error) {
+          console.log(error, "Registration Failed");
       });
   });
 });

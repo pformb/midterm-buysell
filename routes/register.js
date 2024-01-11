@@ -18,13 +18,15 @@ router.post('/', async (req, res) => {
     const newUser = await addUser(user);
     const exists = await userExists(newUser.email);
   if(exists) {
-    res.redirect('/register').send('This user email already exists in our system');
+    res.status(400).send('This user email already exists in our system');
   } else {
     req.session.user_id = newUser.id;
-    req.send("You have successfully registered!");
+    console.log('successfully registered');
+    res.status(200).send("You have successfully registered!");
+    res.redirect('/browse');
   }
   } catch (err) {
-    res.status(500).send(err.message, "An error has occureed during the registration process please try again.");
+    res.status(500).send(`${err.message}, "An error has occured during the registration process please try again."`);
   }
 });
 
