@@ -11,6 +11,40 @@ const getAllProductsFilter = function (db, options = {}, limit = 10) {
     queryParams.push(`%${options.category}%`);
     queryString += ` WHERE categories.name LIKE $${queryParams.length} `;
   }
+  // CONDITION, filter products by price range.
+  if (options.minimum_price && options.maximum_price) {
+    // Push minimum and maximum price values (converted to cents) to queryParams array
+    queryParams.push(options.minimum_price, options.maximum_price);
+    // Add "AND" or "WHERE" clause based on whether other conditions have been added
+    if (queryParams.length > 2) {
+      queryString += " AND";
+    } else {
+      queryString += " WHERE";
+    }
+    queryString += ` price BETWEEN $${queryParams.length - 1} AND $${
+      queryParams.length
+    } `;
+  } else if (options.minimum_price) {
+    // Push minimum price value (converted to cents) to queryParams array
+    queryParams.push(options.minimum_price);
+    // Add "AND" or "WHERE" clause based on whether other conditions have been added
+    if (queryParams.length > 1) {
+      queryString += " AND";
+    } else {
+      queryString += " WHERE";
+    }
+    queryString += ` price >= $${queryParams.length} `;
+  } else if (options.maximum_price) {
+    // Push maximum price value (converted to cents) to queryParams array
+    queryParams.push(options.maximum_price);
+    // Add "AND" or "WHERE" clause based on whether other conditions have been added
+    if (queryParams.length > 1) {
+      queryString += " AND";
+    } else {
+      queryString += " WHERE";
+    }
+    queryString += ` price <= $${queryParams.length} `;
+  }
 
   queryParams.push(limit);
 
@@ -19,61 +53,23 @@ const getAllProductsFilter = function (db, options = {}, limit = 10) {
     ORDER BY products.date_posted
     LIMIT $${queryParams.length};
   `;
-console.log(`queryString:`, queryString);
-console.log(`queryParams:`, queryParams);
+  console.log(`queryString:`, queryString);
+  console.log(`queryParams:`, queryParams);
 
-  return db.query(queryString, queryParams)
-    .then((res) => res.rows);
+  return db.query(queryString, queryParams).then((res) => res.rows);
 };
 
 module.exports = { getAllProductsFilter };
 
-
-  // // CONDITION, filter products by price range.
-  // if (options.minimum_price && options.maximum_price) {
-  //   // Push minimum and maximum price values (converted to cents) to queryParams array
-  //   queryParams.push(options.minimum_price * 100, options.maximum_price * 100);
-  //   // Add "AND" or "WHERE" clause based on whether other conditions have been added
-  //   if (queryParams.length > 2) {
-  //     queryString += " AND";
-  //   } else {
-  //     queryString += " WHERE";
-  //   }
-  //   queryString += ` price BETWEEN $${queryParams.length - 1} AND $${
-  //     queryParams.length
-  //   } `;
-  // } else if (options.minimum_price) {
-  //   // Push minimum price value (converted to cents) to queryParams array
-  //   queryParams.push(options.minimum_price * 100);
-  //   // Add "AND" or "WHERE" clause based on whether other conditions have been added
-  //   if (queryParams.length > 1) {
-  //     queryString += " AND";
-  //   } else {
-  //     queryString += " WHERE";
-  //   }
-  //   queryString += ` price >= $${queryParams.length} `;
-  // } else if (options.maximum_price) {
-  //   // Push maximum price value (converted to cents) to queryParams array
-  //   queryParams.push(options.maximum_price * 100);
-  //   // Add "AND" or "WHERE" clause based on whether other conditions have been added
-  //   if (queryParams.length > 1) {
-  //     queryString += " AND";
-  //   } else {
-  //     queryString += " WHERE";
-  //   }
-  //   queryString += ` price <= $${queryParams.length} `;
-  // }
-
-  // // CONDITION, filter products by quantity.
-  // if (options.quantity) {
-  //   // Push category value with wildcard matching to queryParams array
-  //   queryParams.push(`%${options.quantity}%`);
-  //   // Add "AND" or "WHERE" clause based on whether other conditions have been added
-  //   if (queryParams.length > 1) {
-  //     queryString += " AND";
-  //   } else {
-  //     queryString += " WHERE";
-  //   }
-  //   queryString += ` quantity LIKE $${queryParams.length} `;
-  // }
-
+// // CONDITION, filter products by quantity.
+// if (options.quantity) {
+//   // Push category value with wildcard matching to queryParams array
+//   queryParams.push(`%${options.quantity}%`);
+//   // Add "AND" or "WHERE" clause based on whether other conditions have been added
+//   if (queryParams.length > 1) {
+//     queryString += " AND";
+//   } else {
+//     queryString += " WHERE";
+//   }
+//   queryString += ` quantity LIKE $${queryParams.length} `;
+// }
