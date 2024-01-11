@@ -12,8 +12,8 @@ router.post('/', async (req, res) => {
   const { email, password } = req.body;
   const user = await getUserByEmail(email);
 
-    if (user && bcrypt.compareSync(password, user.password)) {
-      console.log('login faulure');
+    if (!user && bcrypt.compareSync(password, user.password)) {
+      console.log('login failure');
       res.status(401).send('Login Failed: invalid email or password');
 
     } else {
