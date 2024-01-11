@@ -1,5 +1,4 @@
 const express = require('express');
-const db = require('../db/connection');
 const bcrypt = require('bcrypt');
 const { addUser } = require('../db/queries/addUser.js');
 const { userExists } = require('../db/queries/userExists.js');
@@ -13,6 +12,11 @@ router.get('/', async (req, res) => {
 //Post route for register
 router.post('/', async (req, res) => {
   const user = req.body;
+//may break out into seperate validations time permitting
+if (!user.firstName || !user.lastName || !user.email || !user.password || !user.username) {
+  return res.status(400).send('All fields must be filled out');
+}
+
   user.password = bcrypt.hashSync(user.password, 12);
   try {
     const newUser = await addUser(user);
