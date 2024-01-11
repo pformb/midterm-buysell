@@ -23,20 +23,24 @@
 
 <body>
   <h1>Filter Options:</h1>
-<div class="filter-form">
-  <div class="category-select">Select Category
-  <select name="categories">
-    <optgroup label="Art"></optgroup>
-    <optgroup label="Collectables"></optgroup>
-    <optgroup label="Creations"></optgroup>
-    <optgroup label="Fashion"></optgroup>
-    <optgroup label="Food"></optgroup>
-    <optgroup label="Home/Garden"></optgroup>
-    <optgroup label="Pets"></optgroup>
-    <optgroup label="Services"></optgroup>
-    <optgroup label="Wood Working"></optgroup>
-  </select>
-</div>
+  <div class="filter-form">
+    <div class="category-select">
+      <select name="categories" id="categories" onchange="handleCategoryChange()">
+        <option value="" disabled selected>Select Category</option>
+        <option value="Art">Art</option>
+        <option value="Collectables">Collectables</option>
+        <option value="Creations">Creations</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Food">Food</option>
+        <option value="Home/Garden">Home/Garden</option>
+        <option value="Pets">Pets</option>
+        <option value="Services">Services</option>
+        <option value="Wood Working">Wood Working</option>
+      </select>
+    </div>
+
+
+
 <div class="filter-price">
 <label for="minPrice">Min Price:</label>
 <textarea id="minPrice" name="minPrice" rows="1" placeholder="Enter min price"></textarea>
@@ -52,9 +56,27 @@
   <textarea id="maxQuantity" name="maxQuantity" rows="1" placeholder="Enter max qty"></textarea>
   </div>
   <div class="filter-button">
-  <button type="submit">Filter</button>
+    <button type="submit" onclick="applyFilter()">Filter</button>
+  </div>
 </div>
-</div>
+
+<script>
+function handleCategoryChange() {
+  let selectElement = document.getElementById("categories");
+  let selectedCategory = selectElement.options[selectElement.selectedIndex].value;
+  sessionStorage.setItem('selectedCategory', selectedCategory);
+}
+
+function applyFilter() {
+  console.log("Applying filter");
+  let selectedCategory = sessionStorage.getItem('selectedCategory');
+  // Construct the URL with the selected category
+  let url = "http://localhost:8080/browse/" + encodeURIComponent(selectedCategory);
+
+  // Use window.location.href to navigate to the URL
+  window.location.href = url;
+}
+</script>
 
     <!-- Use EJS syntax for looping through data -->
     <div class="product-container">
@@ -67,7 +89,7 @@
       <div> <%= product.price %> </div>
 
       <div> qty: <%= product.quantity %> </div>
-      <div> <img src="<%= product.thumbnail %>" /> </div>
+      <div> <img src="/<%= product.thumbnail %>" /> </div>
       <button class="add-cart">Add to Cart</button>
     </div>
     <% }) %>
