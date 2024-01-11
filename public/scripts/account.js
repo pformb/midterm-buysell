@@ -96,7 +96,6 @@ $(document).ready(function () {
     }
   );
 
-  // Function to toggle edit mode for profile information
   function toggleEdit() {
     let nameInput = $('#nameInput');
     let emailInput = $('#emailInput');
@@ -113,22 +112,14 @@ $(document).ready(function () {
     provinceInput.prop('readonly', !provinceInput.prop('readonly'));
   }
 
-
-  // Click event for the "EDIT" button in profile section
   $('.header-footer button').on('click', toggleEdit);
 
-  // Function to load selling items based on the selected option
   function loadSellingItems(option) {
-    // Implement logic to load selling items based on the selected option
-    // Update the content of ".selling-items" accordingly
     const sellingItemsContent = `Items for ${option}`;
     $('.selling-items').html(sellingItemsContent);
   }
 
-  // Function to load orders items based on the selected option
   function loadOrdersItems(option) {
-    // Implement logic to load orders items based on the selected option
-    // Update the content of ".orders-items" accordingly
     const ordersItemsContent = `Items for ${option}`;
     $('.orders-items').html(ordersItemsContent);
   }
