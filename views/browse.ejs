@@ -38,8 +38,6 @@
       </select>
     </div>
 
-
-
 <div class="filter-price">
 <label for="minPrice">Min Price:</label>
 <textarea id="minPrice" name="minPrice" rows="1" placeholder="Enter min price"></textarea>
@@ -59,21 +57,41 @@
   </div>
 </div>
 
+ <!-- JavaScript functions for changing categories: -->
 <script>
+
+// Function to handle the change event of the category dropdown
 function handleCategoryChange() {
+  // Get the HTML element of the category dropdown
   let selectElement = document.getElementById("categories");
+  // Get the value of the selected option in the dropdown
   let selectedCategory = selectElement.options[selectElement.selectedIndex].value;
+  // Store the selected category in the session storage for later use
   sessionStorage.setItem('selectedCategory', selectedCategory);
 }
-
+// Function to apply the filter when the "Filter" button is clicked
 function applyFilter() {
+  // Retrieve the selected category from the session storage
   let selectedCategory = sessionStorage.getItem('selectedCategory');
-  // Construct the URL with the selected category
-  let url = "http://localhost:8080/browse/" + encodeURIComponent(selectedCategory);
-
-  // Use window.location.href to navigate to the URL
-  window.location.href = url;
+  // Check if a category is selected
+  if (selectedCategory) {
+    // Construct the URL with the selected category
+    let url = "http://localhost:8080/browse/" + encodeURIComponent(selectedCategory);
+    // Use window.location.href to navigate to the URL, effectively reloading the page
+    window.location.href = url;
+  } else {
+    // If no category is selected, simply reload the current page
+    window.location.reload();
+  }
 }
+// Function to clear the session storage after the page loads
+function clearSession() {
+  // Remove the 'selectedCategory' item from the session storage
+  sessionStorage.removeItem('selectedCategory');
+}
+// Attach the clearSession function to the window.onload event
+window.onload = clearSession;
+
 </script>
 
     <!-- Use EJS syntax for looping through data -->
