@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
   $('#profile').on('click',function () {
+    location.reload(true);
+
     const content = `<header>
     <h1>Profile</h1>
     <div class="header-footer">
@@ -67,4 +69,33 @@ $(document).ready(function () {
 
   })
 
+});
+
+$(document).ready(function() {
+  // Add hover effect to side panel options
+  $('.side-panel ul li').hover(
+    function() {
+      // Mouse over
+      $(this).css('color', '#62B6CB');
+      $(this).css('cursor', 'pointer');
+    },
+    function() {
+      // Mouse out
+      $(this).css('color', ''); // Revert to the default color
+      $(this).css('cursor', 'default'); // Revert to the default cursor
+    }
+  );
+});
+
+$(document).ready(function() {
+  function toggleEdit() {
+    var nameInput = $('#nameInput');
+    var emailInput = $('#emailInput');
+    var addressInput = $('#addressInput');
+
+    nameInput.prop('readonly', !nameInput.prop('readonly'));
+    emailInput.prop('readonly', !emailInput.prop('readonly'));
+    addressInput.prop('readonly', !addressInput.prop('readonly'));
+  }
+  $('.header-footer button').on('click', toggleEdit);
 });
