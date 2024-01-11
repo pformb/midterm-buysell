@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="/styles/browse.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
-  <script src="../db/queries/createProductCards.js"></script>
 
 </head>
 
@@ -68,7 +67,6 @@ function handleCategoryChange() {
 }
 
 function applyFilter() {
-  console.log("Applying filter");
   let selectedCategory = sessionStorage.getItem('selectedCategory');
   // Construct the URL with the selected category
   let url = "http://localhost:8080/browse/" + encodeURIComponent(selectedCategory);
