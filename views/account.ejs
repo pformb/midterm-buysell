@@ -15,7 +15,7 @@
 
   <title>My Account</title>
 </head>
-<body class="about-page">
+<body>
   <%- include('partials/_header') %>
 <div class="container">
   <div class="side-panel">
@@ -30,6 +30,7 @@
     <form action=""><button type="submit">Log Out</button></form>
   </div>
   <main class="main-container">
+
     <header>
       <h1>Profile</h1>
       <div class="header-footer">
@@ -38,7 +39,11 @@
       </div>
     </header>
     <div class="profile">
+      <div class="profile-picture">
       <img src="./images/sample-profile-pic.png" alt="">
+      <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
+      <label for="profilePictureInput">Change Profile Picture</label>
+      </div>
       <div class="input-fields">
         <label for=""><b>Name:</b>
           <%= user.first_name %> <%= user.last_name %>
