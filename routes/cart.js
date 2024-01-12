@@ -4,7 +4,7 @@ const db = require("../db/connection.js");
 
 router.get("/", (req, res) => {
   console.log("req.session.user", req.session.user);
-  const user = req.session.user;
+  const user = req.session.user.id;
   const query = `
   SELECT products.*, carts.quantity
   FROM carts
@@ -25,6 +25,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
 
   const { product_id, quanitity, action } = req.body;
+  //const user = req.session.user.id;
   const user = req.session.user;
 
   //if the product is not in the cart, insert the product and quantity
@@ -36,6 +37,7 @@ WHERE NOT EXISTS (
   SELECT * FROM carts WHERE user_id = $1 AND product_id = $2
 )
 `;
+// const values = [user.id, product_id, quanitity];
   const values = [user, product_id, quanitity];
 
   db.query(query, values)
@@ -45,6 +47,7 @@ WHERE NOT EXISTS (
     const query = `
     DELETE FROM carts
     WHERE user_id = $1 AND product_id = $2`;
+    // const values = [user.id, product_id];
     const values = [user, product_id];
 
     db.query(query, values)
