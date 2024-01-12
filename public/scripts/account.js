@@ -29,7 +29,8 @@ $(document).ready(function () {
 
   // Click event for the "Messages" menu option
   $('#messages').on('click', function () {
-    const content = `<h1 class="messages-h1">Messages</h1>`;
+    const content = `<h1 class="messages-h1">Messages</h1>
+    <h3>No messages.</h3>`;
     $('main').html(content);
   });
 
@@ -62,8 +63,17 @@ $(document).ready(function () {
       <span class="selling-option" data-option="pending">Pending</span>
       <span class="selling-option" data-option="history">History</span>
     </div>
-    <div class="selling-items">
+    <div class="selling-items orders-items">
       <!-- Items will be dynamically loaded here based on the selected option -->
+
+        <div class="order-item">
+          <h4>Title: </h4>
+          <p>Description: </p>
+          <p>Price: </p>
+          <p>Amount: </p>
+          <p>Status: </p>
+        </div>
+
     </div>`;
 
     $('main').html(content);
@@ -78,7 +88,7 @@ $(document).ready(function () {
   // Click event for the "Favorites" menu option
   $('#favorites').on('click', function () {
     const content = `<h1 class="messages-h1">Favourites</h1>
-    <div>Favourites</div>`;
+    <h3>Nothing bookmarked.</h3>`;
     $('main').html(content);
   });
 
