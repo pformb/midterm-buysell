@@ -40,10 +40,10 @@
 
 <div class="filter-price">
 <label for="minPrice">Min Price:</label>
-<textarea id="minPrice" name="minPrice" rows="1" placeholder="Enter min price"></textarea>
+<textarea id="minPrice" name="minPrice" rows="1" placeholder="Enter min price" onchange="handleMinPriceChange()"></textarea>
 <br>
 <label for="maxPrice">Max Price:</label>
-<textarea id="maxPrice" name="maxPrice" rows="1" placeholder="Enter max price"></textarea>
+<textarea id="maxPrice" name="maxPrice" rows="1" placeholder="Enter max price" onchange="handleMaxPriceChange()"></textarea>
 </div>
 <div class="filter-quantity">
   <label for="minQuantity">Min qty:</label>
@@ -63,33 +63,69 @@
 function handleCategoryChange() {
   // Get the HTML element of the category dropdown
   let selectElement = document.getElementById("categories");
+
   // Get the value of the selected option in the dropdown
   let selectedCategory = selectElement.options[selectElement.selectedIndex].value;
+
   // Store the selected category in the session storage for later use
   sessionStorage.setItem('selectedCategory', selectedCategory);
 }
+
+// Function to handle the change event of the min price textarea
+function handleMinPriceChange() {
+  // Get the value of the min price from the textarea
+  let minPrice = document.getElementById("minPrice").value;
+
+  // Store the min price in the session storage for later use
+  sessionStorage.setItem('minPrice', minPrice);
+}
+
+// Function to handle the change event of the max price textarea
+function handleMaxPriceChange() {
+  // Get the value of the max price from the textarea
+  let maxPrice = document.getElementById("maxPrice").value;
+
+  // Store the max price in the session storage for later use
+  sessionStorage.setItem('maxPrice', maxPrice);
+}
+
 // Function to apply the filter when the "Filter" button is clicked
 function applyFilter() {
-  // Retrieve the selected category from the session storage
+  // Retrieve the selected category, min price, and max price from the session storage
   let selectedCategory = sessionStorage.getItem('selectedCategory');
-  // Check if a category is selected
+  let minPrice = sessionStorage.getItem('minPrice');
+  let maxPrice = sessionStorage.getItem('maxPrice');
+
+  // Construct the URL with the selected category, min price, and max price
+  let url = "http://localhost:8080/browse";
+
   if (selectedCategory) {
-    // Construct the URL with the selected category
-    let url = "http://localhost:8080/browse/" + encodeURIComponent(selectedCategory);
-    // Use window.location.href to navigate to the URL, effectively reloading the page
-    window.location.href = url;
-  } else {
-    // If no category is selected, simply reload the current page
-    window.location.reload();
+    url += "/" + encodeURIComponent(selectedCategory);
   }
+
+  if (minPrice) {
+    url += "/" + encodeURIComponent(minPrice);
+  }
+
+  if (maxPrice) {
+    url += "/" + encodeURIComponent(maxPrice);
+  }
+
+  // Use window.location.href to navigate to the URL, effectively reloading the page
+  window.location.href = url;
 }
+
 // Function to clear the session storage after the page loads
 function clearSession() {
-  // Remove the 'selectedCategory' item from the session storage
+  // Remove the 'selectedCategory', 'minPrice', and 'maxPrice' items from the session storage
   sessionStorage.removeItem('selectedCategory');
+  sessionStorage.removeItem('minPrice');
+  sessionStorage.removeItem('maxPrice');
 }
+
 // Attach the clearSession function to the window.onload event
 window.onload = clearSession;
+
 
 </script>
 
