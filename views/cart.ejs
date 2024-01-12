@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/styles/layout.css" />
   <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
 
-  <title>Document</title>
+  <title>Cart</title>
 </head>
 
 <header>
@@ -54,35 +54,45 @@
       </div>
       <% }) %>
 
+      <%cartItems.forEach(function(item){%>
+        <div class="cart-item">
+          <div class="cart-item-image">
+            <img src="https://images.unsplash.com/photo-1581093458791-9d8a2f615d6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="item image">
+          </div>
+          <div class="cart-item-info">
+            <h2><%= item.name %></h2>
+            <p><%= item.description %></p>
+            <p><%= item.price %></p>
+            <p><%= item.quantity %></p>
+          </div>
+          <form class="cart-item-buttons" method="post" action="/cart">
+            <input type=""hidden name="itemId" value="<%= item.id %>">
+            <input type="hidden" name="quantity" value="<%= item.quantity %>">
+            <button type="submit" name="action" value="remove">Remove</button>
+            <button type="submit" name="action" value="saveForLater">Save for Later</button>
+          </form>
+        </div>
+        <% }) %>
+
+            <%cartItems.forEach(function(item){%>
       <div class="cart-item">
         <div class="cart-item-image">
           <img src="https://images.unsplash.com/photo-1581093458791-9d8a2f615d6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="item image">
         </div>
         <div class="cart-item-info">
-          <h2>Item Name</h2>
-          <p>Item Description</p>
-          <p>Item Price</p>
-          <p>Item Quantity</p>
+          <h2><%= item.name %></h2>
+          <p><%= item.description %></p>
+          <p><%= item.price %></p>
+          <p><%= item.quantity %></p>
         </div>
-        <div class="cart-item-buttons">
-          <button type="button" name="button">Remove</button>
-          <button type="button" name="button">Save for Later</button>
-        </div>
+        <form class="cart-item-buttons" method="post" action="/cart">
+          <input type=""hidden name="itemId" value="<%= item.id %>">
+          <input type="hidden" name="quantity" value="<%= item.quantity %>">
+          <button type="submit" name="action" value="remove">Remove</button>
+          <button type="submit" name="action" value="saveForLater">Save for Later</button>
+        </form>
       </div>
-      <div class="cart-item">
-        <div class="cart-item-image">
-          <img src="https://images.unsplash.com/photo-1581093458791-9d8a2f615d6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="item image">
-        </div>
-        <div class="cart-item-info">
-          <h2>Item Name</h2>
-          <p>Item Description</p>
-          <p>Item Price</p>
-          <p>Item Quantity</p>
-        </div>
-        <div class="cart-item-buttons">
-          <button type="button" name="button">Remove</button>
-          <button type="button" name="button">Save for Later</button>
-        </div>
+      <% }) %>
 
 <body>
 
