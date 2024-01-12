@@ -57,12 +57,12 @@ $(document).ready(function () {
   // Click event for the "Orders" menu option
   $('#orders').on('click', function () {
     const content = `<h1>Orders</h1>
-    <div class="orders-menu">
-      <span class="orders-option" data-option="current">Current</span>
-      <span class="orders-option" data-option="pending">Pending</span>
-      <span class="orders-option" data-option="history">History</span>
+    <div class="selling-menu">
+      <span class="selling-option" data-option="current">Current</span>
+      <span class="selling-option" data-option="pending">Pending</span>
+      <span class="selling-option" data-option="history">History</span>
     </div>
-    <div class="orders-items">
+    <div class="selling-items">
       <!-- Items will be dynamically loaded here based on the selected option -->
     </div>`;
 
