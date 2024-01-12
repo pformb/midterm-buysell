@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require("../db/connection.js");
 
 router.get("/", (req, res) => {
+  console.log("req.session.user", req.session.user);
   const user = req.session.user;
   const query = `
   SELECT products.*, carts.quantity
@@ -10,10 +11,10 @@ router.get("/", (req, res) => {
   JOIN products ON carts.product_id = products.id
   WHERE carts.user_id = $1
   `;
-  db.query((query, [user]))
+  db.query(query, [user.id])
     .then(result => {
       const cartItems = result.rows;
-      res.render("cart", { user });
+      res.render("cart", { user, cartItems });
     })
     .catch(err => res.status(500).send(err));
 });
@@ -23,10 +24,11 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
 
-  const { product_id, quanitity } = req.body;
+  const { product_id, quanitity, action } = req.body;
   const user = req.session.user;
 
   //if the product is not in the cart, insert the product and quantity
+  if (action === "add") {
   const query = `
 INSERT INTO CARTS (user_id, product_id, quanitiy)
 SELECT $1, $2, $3
@@ -39,44 +41,16 @@ WHERE NOT EXISTS (
   db.query(query, values)
     .then(() => res.redirect("/cart"))
     .catch(err => res.status(500).send(err));
-});
+  } else if (action === "remove") {
+    const query = `
+    DELETE FROM carts
+    WHERE user_id = $1 AND product_id = $2`;
+    const values = [user, product_id];
 
-//route to remove items from cart needs to be a post with a delete method
-router.post("/", (req, res) => {
-  const { product_id, quanitity } = req.body;
-  const user = req.session.user;
-
-  if (action === "remove") {
-  const query = `
-  DELETE FROM carts
-  WHERE user_id = $1 AND product_id = $2`;
-  const values = [user, product_id];
-
-  db.query(query, values)
-    .then(() => res.redirect("/cart"))
-    .catch(err => res.status(500).send(err));
+    db.query(query, values)
+      .then(() => res.redirect("/cart"))
+      .catch(err => res.status(500).send(err));
   }
 });
 
 module.exports = router;
-
-
-// console.log("product_id", product_id);
-// console.log("quantity", quanitity);
-// console.log("user", user);
-// console.log("cart_id", cart_id);
-
-//insert the product_id and quanitity into the carts table
-//needs to also join on the users table to get the user_id
-//needs to also join on the products table to get the price
-//needs to also join on the cart table to get the cart_id
-//ensure the cart is keyed to the user_id, option to save user cart if they log out and log back in ?
-//if the product is already in the cart, update the quantity
-
-
-// console.log("product_id", product_id);
-// console.log("quantity", quanitity);
-// console.log("user", user);
-// console.log("cart_id", cart_id);
-
-//delete the product_id and quanitity from the carts table and all associated data
