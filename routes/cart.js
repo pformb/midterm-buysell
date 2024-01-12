@@ -3,14 +3,14 @@ const router = express.Router();
 const db = require("../db/connection.js");
 
 router.get("/", (req, res) => {
-  const userId = req.session.user.id;
+  const user = req.session.user;
   const query = `
   SELECT products.*, carts.quantity
   FROM carts
   JOIN products ON carts.product_id = products.id
   WHERE carts.user_id = $1
   `;
-  db.query((query, [userId]))
+  db.query((query, [user]))
     .then(result => {
       const cartItems = result.rows;
       res.render("cart", { user });
@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
 
   const { product_id, quanitity } = req.body;
-  const userId = req.session.user.id;
+  const user = req.session.user;
 
   //if the product is not in the cart, insert the product and quantity
   const query = `
@@ -34,7 +34,7 @@ WHERE NOT EXISTS (
   SELECT * FROM carts WHERE user_id = $1 AND product_id = $2
 )
 `;
-  const values = [userId, product_id, quanitity];
+  const values = [user, product_id, quanitity];
 
   db.query(query, values)
     .then(() => res.redirect("/cart"))
@@ -44,13 +44,13 @@ WHERE NOT EXISTS (
 //route to remove items from cart needs to be a post with a delete method
 router.post("/", (req, res) => {
   const { product_id, quanitity } = req.body;
-  const userId = req.session.user.id;
+  const user = req.session.user;
 
   if (action === "remove") {
   const query = `
   DELETE FROM carts
   WHERE user_id = $1 AND product_id = $2`;
-  const values = [userId, product_id];
+  const values = [user, product_id];
 
   db.query(query, values)
     .then(() => res.redirect("/cart"))
