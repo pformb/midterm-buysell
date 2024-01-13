@@ -1,7 +1,8 @@
-const addProduct = function (product) {
-  // Destructuring product object properties
+const db = require('../connection');
+
+const addProduct = function (product, db) {
+  // Destructuring product object properties, removing `id` and `date_posted`
   const {
-    id,
     title,
     description,
     thumbnail,
@@ -10,18 +11,16 @@ const addProduct = function (product) {
     quantity,
     category_id,
     user_id,
-    date_posted,
-    status,
+    status
   } = product;
 
-  // Using db to execute a SQL query to insert a new product into the 'product' table
+  // Using db to execute a SQL query to insert a new product into the 'products' table
   return db
     .query(
-      `INSERT INTO products (id, title, description, thumbnail,
-     additional_photo, price, quantity, category_id, user_id, date_posted, status) VALUES ($1, $2, $3,
-     $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`,
+      `INSERT INTO products (title, description, thumbnail,
+      additional_photo, price, quantity, category_id, user_id, status) VALUES ($1, $2, $3,
+      $4, $5, $6, $7, $8, $9) RETURNING *`,
       [
-        id,
         title,
         description,
         thumbnail,
@@ -30,12 +29,11 @@ const addProduct = function (product) {
         quantity,
         category_id,
         user_id,
-        date_posted,
-        status,
+        status
       ]
     )
     .then((result) => {
-      // Returning the newly inserted user object, including the auto-generated ID
+      // Returning the newly inserted product object, including the auto-generated ID
       return result.rows[0];
     })
     .catch((err) => {
@@ -43,3 +41,5 @@ const addProduct = function (product) {
       console.error(err.message);
     });
 };
+
+module.exports = { addProduct };

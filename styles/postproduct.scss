@@ -15,14 +15,17 @@ body {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  font-size: 25px;
+  font-size: 22px;
   padding: 10px;
 }
 
 h1 {
   margin-top: 150px;
 }
-
+h3 {
+  display: flex;
+  margin-top: 1px;
+}
 /* Style for the title input */
 #title {
   /* Your styles here */
