@@ -22,82 +22,29 @@
   <h1><b>Cart</b></h1>
   </div>
 
-  <!--
-    -adding dynamic conditions to the html to control the form submissions for each item
-    -<input> elements of type hidden let web developers include data that cannot be seen or modified by users when a form is submitted.
-    -the value attribute of the input element is set to the id of the item
-    -the name attribute of the input element is set to the id of the item
-    -the value attribute of the button element is set to the id of the item
-    -value remove and save for later are what is happening to the item
-    -the action is for when the form is submitted in the browser so it knows what needs to happen after the submission event
-  -->
-
+  <body>
     <div class="cart-container">
 
-      <%cartItems.forEach(function(item){%>
-      <div class="cart-item">
-        <div class="cart-item-image">
-          <img src="https://images.unsplash.com/photo-1581093458791-9d8a2f615d6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="item image">
-        </div>
-        <div class="cart-item-info">
-          <h2><%= item.name %></h2>
-          <p><%= item.description %></p>
-          <p><%= item.price %></p>
-          <p><%= item.quantity %></p>
-        </div>
-        <form class="cart-item-buttons" method="post" action="/cart">
-          <input type=""hidden name="itemId" value="<%= item.id %>">
-          <input type="hidden" name="quantity" value="<%= item.quantity %>">
-          <button type="submit" name="action" value="add">Add</button>
-          <button type="submit" name="action" value="remove">Remove</button>
-          <!-- <button type="submit" name="action" value="saveForLater">Save for Later</button> -->
-        </form>
-      </div>
-      <% }) %>
-
-      <%cartItems.forEach(function(item){%>
-        <div class="cart-item">
-          <div class="cart-item-image">
-            <img src="https://images.unsplash.com/photo-1581093458791-9d8a2f615d6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="item image">
+        <%cartItems.forEach(function(item){%>
+          <div class="cart-item">
+              <div class="cart-item-image">
+                <img src="/<%= item.thumbnail %>" alt="item image">
+              </div>
+                <div class="cart-item-info">
+                  <h2><%= item.title %></h2>
+                  <p><%= item.description %></p>
+                  <p><%= item.price %></p>
+                  <p><%= item.quantity %></p>
+                </div>
+                  <form class="cart-item-buttons" method="post" action="/cart">
+                    <input type=""hidden name="itemId" value="<%= item.id %>">
+                    <input type="hidden" name="quantity" value="<%= item.quantity %>">
+                    <button type="submit" name="action" value="add-cart">Add</button>
+                    <button type="submit" name="action" value="remove">Remove</button>
+                  </form>
           </div>
-          <div class="cart-item-info">
-            <h2><%= item.name %></h2>
-            <p><%= item.description %></p>
-            <p><%= item.price %></p>
-            <p><%= item.quantity %></p>
-          </div>
-          <form class="cart-item-buttons" method="post" action="/cart">
-            <input type=""hidden name="itemId" value="<%= item.id %>">
-            <input type="hidden" name="quantity" value="<%= item.quantity %>">
-            <button type="submit" name="action" value="add">Add</button>
-            <button type="submit" name="action" value="remove">Remove</button>
-          <!-- <button type="submit" name="action" value="saveForLater">Save for Later</button> -->
-          </form>
-        </div>
         <% }) %>
 
-            <%cartItems.forEach(function(item){%>
-      <div class="cart-item">
-        <div class="cart-item-image">
-          <img src="https://images.unsplash.com/photo-1581093458791-9d8a2f615d6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="item image">
-        </div>
-        <div class="cart-item-info">
-          <h2><%= item.name %></h2>
-          <p><%= item.description %></p>
-          <p><%= item.price %></p>
-          <p><%= item.quantity %></p>
-        </div>
-        <form class="cart-item-buttons" method="post" action="/cart">
-          <input type=""hidden name="itemId" value="<%= item.id %>">
-          <input type="hidden" name="quantity" value="<%= item.quantity %>">
-          <button type="submit" name="action" value="add">Add</button>
-          <button type="submit" name="action" value="remove">Remove</button>
-          <!-- <button type="submit" name="action" value="saveForLater">Save for Later</button> -->
-        </form>
       </div>
-      <% }) %>
-
-<body>
-
 </body>
 </html>
