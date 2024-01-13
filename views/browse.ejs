@@ -180,15 +180,15 @@ window.onload = clearSession;
   <% } %>
 </div>
       <!-- <button class="add-cart">Add to Cart</button> -->
-
       <form class="cart-item-buttons" method="post" action="/cart">
           <input type=""hidden name="itemId" value="<%= product.id %>">
           <input type="hidden" name="quantity" value="<%= product.quantity %>">
-          <button type="submit" name="action" value="add-cart">Add</button>
+          <button class="add-cart-button" type="submit" name="action" value="add-cart">Add to Cart</button>
           <!-- <button type="submit" name="action" value="remove">Remove</button> -->
         </form>
+      </div>
 
-    </div>
+
     <% }) %>
 
   </div>

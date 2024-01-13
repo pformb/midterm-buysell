@@ -24,9 +24,7 @@ body {
 }
 
 .filter-form {
-  background-color: #466365;
-  color: #EAF0CE;
-  background-image: url("https://www.transparenttextures.com/patterns/black-paper.png");
+  color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -35,6 +33,7 @@ body {
   width: 950px;
   margin-top: 1px;
   padding: 20px;
+  border: solid 2px black ;
 }
 
 h1 {
@@ -50,7 +49,7 @@ img {
   border: solid 2px black ;
 }
 
-.cart-item-buttons:hover {
+.add-cart-button:hover {
   background-color: green;
 }
 
