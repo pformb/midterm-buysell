@@ -8,3 +8,75 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
   font-family: 'Chelsea Market', sans-serif;
 }
+
+.post-ad-form {
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 25px;
+  padding: 10px;
+}
+
+h1 {
+  margin-top: 150px;
+}
+
+/* Style for the title input */
+#title {
+  /* Your styles here */
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+/* Style for the description input */
+#description {
+  /* Your styles here */
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+/* Style for the thumbnail input */
+#thumbnail {
+  /* Your styles here */
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+/* Style for the price input */
+#price {
+  /* Your styles here */
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+/* Style for the quantity input */
+#quantity {
+  /* Your styles here */
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+/* Style for the status select */
+#status {
+  /* Your styles here */
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+#category {
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.postad-submit-button {
+  margin-bottom: 20px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  margin-left: 230px;
+}
+
+
+
