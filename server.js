@@ -48,6 +48,7 @@ const accountRoutes = require('./routes/account');
 const helpRoutes = require('./routes/help');
 const cartRoutes = require('./routes/cart');
 const postProductRoutes = require('./routes/postProduct');
+const userMiddleware = require('./lib/user-middleware');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -64,6 +65,7 @@ app.use('/account', accountRoutes);
 app.use('/help', helpRoutes);
 app.use('/cart', cartRoutes);
 app.use('/postProduct', postProductRoutes);
+app.use(userMiddleware);
 
 // Note: mount other resources here, using the same pattern above
 

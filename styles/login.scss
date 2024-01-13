@@ -4,12 +4,16 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
+  background-color: #ffffff;
+  background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+  font-family: 'Chelsea Market', sans-serif;
 }
 
 .login-container {
   text-align: center;
   border: 2px solid black;
-  border-radius: 5%;
+  background-color: beige;
+
 
   form {
     max-width: 90%;
@@ -28,8 +32,6 @@ body {
     }
 
     button {
-      background-color: beige;
-      color: #466365;
       padding: 10px 15px;
       border: none;
       cursor: pointer;
