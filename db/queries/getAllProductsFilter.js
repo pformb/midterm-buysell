@@ -25,7 +25,7 @@ const getAllProductsFilter = function (db, options = {}, limit = 10) {
       queryParams.length
     } `;
   } else if (options.minimum_price) {
-    // Push minimum price value (converted to cents) to queryParams array
+    // Push minimum price value to queryParams array
     queryParams.push(options.minimum_price);
     // Add "AND" or "WHERE" clause based on whether other conditions have been added
     if (queryParams.length > 1) {
@@ -35,7 +35,7 @@ const getAllProductsFilter = function (db, options = {}, limit = 10) {
     }
     queryString += ` price >= $${queryParams.length} `;
   } else if (options.maximum_price) {
-    // Push maximum price value (converted to cents) to queryParams array
+    // Push maximum price value to queryParams array
     queryParams.push(options.maximum_price);
     // Add "AND" or "WHERE" clause based on whether other conditions have been added
     if (queryParams.length > 1) {
@@ -44,6 +44,41 @@ const getAllProductsFilter = function (db, options = {}, limit = 10) {
       queryString += " WHERE";
     }
     queryString += ` price <= $${queryParams.length} `;
+  }
+
+  // CONDITION, filter products by quantity range.
+  if (options.minimum_quantity && options.maximum_quantity) {
+    // Push minimum and maximum price values (converted to cents) to queryParams array
+    queryParams.push(options.minimum_quantity, options.maximum_quantity);
+    // Add "AND" or "WHERE" clause based on whether other conditions have been added
+    if (queryParams.length > 2) {
+      queryString += " AND";
+    } else {
+      queryString += " WHERE";
+    }
+    queryString += ` quantity BETWEEN $${queryParams.length - 1} AND $${
+      queryParams.length
+    } `;
+  } else if (options.minimum_quantity) {
+    // Push minimum quantity value to queryParams array
+    queryParams.push(options.minimum_quantity);
+    // Add "AND" or "WHERE" clause based on whether other conditions have been added
+    if (queryParams.length > 1) {
+      queryString += " AND";
+    } else {
+      queryString += " WHERE";
+    }
+    queryString += ` quantity >= $${queryParams.length} `;
+  } else if (options.maximum_quantity) {
+    // Push maximum quantity value to queryParams array
+    queryParams.push(options.maximum_quantity);
+    // Add "AND" or "WHERE" clause based on whether other conditions have been added
+    if (queryParams.length > 1) {
+      queryString += " AND";
+    } else {
+      queryString += " WHERE";
+    }
+    queryString += ` quantity <= $${queryParams.length} `;
   }
 
   queryParams.push(limit);
@@ -61,15 +96,3 @@ const getAllProductsFilter = function (db, options = {}, limit = 10) {
 
 module.exports = { getAllProductsFilter };
 
-// // CONDITION, filter products by quantity.
-// if (options.quantity) {
-//   // Push category value with wildcard matching to queryParams array
-//   queryParams.push(`%${options.quantity}%`);
-//   // Add "AND" or "WHERE" clause based on whether other conditions have been added
-//   if (queryParams.length > 1) {
-//     queryString += " AND";
-//   } else {
-//     queryString += " WHERE";
-//   }
-//   queryString += ` quantity LIKE $${queryParams.length} `;
-// }

@@ -46,11 +46,11 @@
 <textarea id="maxPrice" name="maxPrice" rows="1" placeholder="Enter max price" onchange="handleMaxPriceChange()"></textarea>
 </div>
 <div class="filter-quantity">
-  <label for="minQuantity">Min qty:</label>
-  <textarea id="minQuantity" name="minQuantity" rows="1" placeholder="Enter min qty"></textarea>
+  <label for="minQty">Min qty:</label>
+  <textarea id="minQty" name="minQty" rows="1" placeholder="Enter min qty" onchange="handleMinQtyChange()"></textarea>
   <br>
-  <label for="maxPrice">Max qty:</label>
-  <textarea id="maxQuantity" name="maxQuantity" rows="1" placeholder="Enter max qty"></textarea>
+  <label for="maxQty">Max qty:</label>
+  <textarea id="maxQty" name="maxQty" rows="1" placeholder="Enter max qty" onchange="handleMaxQtyChange()"></textarea>
   </div>
   <div class="filter-button">
     <button type="submit" onclick="applyFilter()">Filter</button>
@@ -89,12 +89,32 @@ function handleMaxPriceChange() {
   sessionStorage.setItem('maxPrice', maxPrice);
 }
 
+// Function to handle the change event of the min quantity textarea
+function handleMinQtyChange() {
+  // Get the value of the min quantity from the textarea
+  let minQty = document.getElementById("minQty").value;
+
+  // Store the min quantity in the session storage for later use
+  sessionStorage.setItem('minQty', minQty);
+}
+
+// Function to handle the change event of the max quantity textarea
+function handleMaxQtyChange() {
+  // Get the value of the max quantity from the textarea
+  let maxQty = document.getElementById("maxQty").value;
+
+  // Store the max quantity in the session storage for later use
+  sessionStorage.setItem('maxQty', maxQty);
+}
+
 // Function to apply the filter when the "Filter" button is clicked
 function applyFilter() {
-  // Retrieve the selected category, min price, and max price from the session storage
+  // Retrieve the selected category, min price, and max price, min qty and max qty from the session storage
   let selectedCategory = sessionStorage.getItem('selectedCategory');
   let minPrice = sessionStorage.getItem('minPrice');
   let maxPrice = sessionStorage.getItem('maxPrice');
+  let minQty = sessionStorage.getItem('minQty');
+  let maxQty = sessionStorage.getItem('maxQty');
 
   // Construct the URL with the selected category, min price, and max price
   let url = "http://localhost:8080/browse";
@@ -104,11 +124,19 @@ function applyFilter() {
   }
 
   if (minPrice) {
-    url += "/" + encodeURIComponent(minPrice);
+    url += "/minPrice/" + encodeURIComponent(minPrice);
   }
 
   if (maxPrice) {
-    url += "/" + encodeURIComponent(maxPrice);
+    url += "/maxPrice/" + encodeURIComponent(maxPrice);
+  }
+
+  if (minQty) {
+    url += "/minQty/" + encodeURIComponent(minQty);
+  }
+
+  if (maxQty) {
+    url += "/maxQty/" + encodeURIComponent(maxQty);
   }
 
   // Use window.location.href to navigate to the URL, effectively reloading the page
@@ -117,10 +145,12 @@ function applyFilter() {
 
 // Function to clear the session storage after the page loads
 function clearSession() {
-  // Remove the 'selectedCategory', 'minPrice', and 'maxPrice' items from the session storage
+  // Remove the 'selectedCategory', 'minPrice', and 'maxPrice', 'minQty' and 'maxQty' items from the session storage
   sessionStorage.removeItem('selectedCategory');
   sessionStorage.removeItem('minPrice');
   sessionStorage.removeItem('maxPrice');
+  sessionStorage.removeItem('minQty');
+  sessionStorage.removeItem('maxQty');
 }
 
 // Attach the clearSession function to the window.onload event
