@@ -1,4 +1,4 @@
-const getAllProducts = function (db, limit = 10) {
+const getAllProducts = function (db, limit = 9) {
   return db
     .query(
       `SELECT products.id, products.title, products.description, products.thumbnail, products.additional_photo, products.price, products.quantity

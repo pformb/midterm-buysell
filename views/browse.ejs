@@ -170,7 +170,15 @@ window.onload = clearSession;
       <div> <%= product.price %> </div>
 
       <div> qty: <%= product.quantity %> </div>
-      <div> <img src="/<%= product.thumbnail %>" /> </div>
+      <div>
+  <% if (product.thumbnail.startsWith('http://') || product.thumbnail.startsWith('https://')) { %>
+    <!-- If thumbnail is an external URL, use it as-is -->
+    <img src="<%= product.thumbnail %>" />
+  <% } else { %>
+    <!-- If thumbnail is a local file, prepend the path with /images or appropriate directory -->
+    <img src="/<%= product.thumbnail %>" />
+  <% } %>
+</div>
       <!-- <button class="add-cart">Add to Cart</button> -->
 
       <form class="cart-item-buttons" method="post" action="/cart">

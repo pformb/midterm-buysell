@@ -1,4 +1,4 @@
-const getAllProductsFilter = function (db, options = {}, limit = 10) {
+const getAllProductsFilter = function (db, options = {}, limit = 9) {
   const queryParams = [];
   let queryString = `
     SELECT products.*
