@@ -47,6 +47,7 @@ const aboutRoutes = require('./routes/about');
 const accountRoutes = require('./routes/account');
 const helpRoutes = require('./routes/help');
 const cartRoutes = require('./routes/cart');
+const postProductRoutes = require('./routes/postProduct');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -62,6 +63,7 @@ app.use('/about', aboutRoutes);
 app.use('/account', accountRoutes);
 app.use('/help', helpRoutes);
 app.use('/cart', cartRoutes);
+app.use('/postProduct', postProductRoutes);
 
 // Note: mount other resources here, using the same pattern above
 
