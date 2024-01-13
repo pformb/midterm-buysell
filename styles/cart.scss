@@ -42,8 +42,15 @@ body {
   display: flex;
   width: 150px;
   height: 150px;
-  border: solid 2px black;
 }
+
+.cart-item-image img {
+  display:block;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: cover;
+}
+
 
 .cart-item-info {
   display: flex;
