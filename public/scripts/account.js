@@ -29,7 +29,8 @@ $(document).ready(function () {
 
   // Click event for the "Messages" menu option
   $('#messages').on('click', function () {
-    const content = `<h1 class="messages-h1">Messages</h1>`;
+    const content = `<h1 class="messages-h1">Messages</h1>
+    <h3>No messages.</h3>`;
     $('main').html(content);
   });
 
@@ -58,13 +59,16 @@ $(document).ready(function () {
   $('#orders').on('click', function () {
     const content = `<h1>Orders</h1>
     <div class="selling-menu">
-      <span class="selling-option" data-option="current">Current</span>
-      <span class="selling-option" data-option="pending">Pending</span>
-      <span class="selling-option" data-option="history">History</span>
+      <span class="selling-option orders-option" data-option="current">Current</span>
+      <span class="selling-option orders-option" data-option="pending">Pending</span>
+      <span class="selling-option orders-option" data-option="history">History</span>
     </div>
-    <div class="selling-items">
+    <div class="selling-items orders-items">
       <!-- Items will be dynamically loaded here based on the selected option -->
-    </div>`;
+
+         <div class="order-item">
+        </div>
+     </div>`;
 
     $('main').html(content);
 
@@ -78,7 +82,7 @@ $(document).ready(function () {
   // Click event for the "Favorites" menu option
   $('#favorites').on('click', function () {
     const content = `<h1 class="messages-h1">Favourites</h1>
-    <div>Favourites</div>`;
+    <h3>Nothing bookmarked.</h3>`;
     $('main').html(content);
   });
 
@@ -115,12 +119,19 @@ $(document).ready(function () {
   $('.header-footer button').on('click', toggleEdit);
 
   function loadSellingItems(option) {
-    const sellingItemsContent = `Items for ${option}`;
+    const sellingItemsContent = `<h4>Items for ${option}. Currently none.</h4>`;
     $('.selling-items').html(sellingItemsContent);
   }
 
   function loadOrdersItems(option) {
-    const ordersItemsContent = `Items for ${option}`;
+    const ordersItemsContent = `<div class="order-item">
+    <h3>You are currently in ${option}!</h3>
+    <h4>Title: </h4>
+    <p>Description: </p>
+    <p>Price: </p>
+    <p>Amount: </p>
+    <p>Status: </p>
+  </div>`; //`Items for ${option}`;
     $('.orders-items').html(ordersItemsContent);
   }
 
