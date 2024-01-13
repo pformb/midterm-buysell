@@ -70,7 +70,8 @@ app.use('/cart', cartRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  const user = req.session.user;
+  res.render('index', { user });
 });
 
 
