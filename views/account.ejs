@@ -13,6 +13,18 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/account.js"></script>
 
+  <script>
+    $(document).ready(function() {
+      $('#profilePictureInput').change(function(e) {
+        const fileInput = e.target;
+        if (fileInput.files.length > 0) {
+          const newProfilePic = URL.createObjectURL(fileInput.files[0]);
+          $('.profile-picture img').attr('src', newProfilePic);
+        }
+      });
+    });
+    </script>
+
   <title>My Account</title>
 </head>
 <body>
